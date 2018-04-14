@@ -4,10 +4,19 @@ body {
   padding-bottom: 20px;
 }
 
-/**navbar**/
+/**logo**/
 /*
+.logo {
+  position: fixed;
+  top: 0;
+  margin: auto;
+}
+*/
+
+/**navbar**/
+
 .navbar-inverse {
-    position: relative;
+    /*position: relative;*/
     float:left
     
     background-color:#000000;
@@ -63,7 +72,7 @@ body {
     -moz-border-radius:6px 0 6px 6px;
     border-radius:6px 0 6px 6px;
 }
-*/
+
 /**RWD**/
 .thumbnail p, .thumbnail h5{
   white-space: nowrap;

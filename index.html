@@ -32,31 +32,70 @@
 
 <body>
 
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>
-        <a class="navbar-brand" href="#">Project name</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <form class="navbar-form navbar-right">
-          <div class="form-group">
-            <input type="text" placeholder="Email" class="form-control">
-          </div>
-          <div class="form-group">
-            <input type="password" placeholder="Password" class="form-control">
-          </div>
-          <button type="submit" class="btn btn-success">Sign in</button>
-        </form>
-      </div>
-      <!--/.navbar-collapse -->
+        </button>
+        <!--<a class="logo pull-left" href="#"><img src="./VTicon.png"></a>-->
+        <a class="navbar-brand" href="https://www.voicetube.com/?ref=logo">VoiceTube</a>
     </div>
-  </nav>
+
+    <div class="collapse navbar-collapse">
+    	<ul class="nav navbar-nav">
+    		<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Channels <span class="caret"></span></a>
+            	<ul class="dropdown-menu">
+            		<li><a href="#">Speeches and Presentations</a></li>
+            		<li><a href="#">Education Videos</a></li>
+            		<li role="separator" class="divider"></li>
+            		<li><a href="#">BBC Learning English</a></li>
+            		<li><a href="#">CNN Learning English</a></li>
+            		<li role="separator" class="divider"></li>
+            		<li><a href="#">TOEIC</a></li>
+            		<li><a href="#">TOEFL</a></li>
+          		</ul>
+        	</li>
+
+    		<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Levels <span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+           			<li class="dropdown-submenu"><a href="#" data-toggle="dropdown">Basic: TOEIC250-545</a>
+                  		<ul class="dropdown-menu">
+                    		<li><a href="#">All</a></li>
+                    		<li><a href="#">Entertainment</a></li>
+                  		</ul>
+              		</li>
+
+              		<li class="dropdown-submenu"><a href="#" data-toggle="dropdown">Intermediate: TOEIC550-780</a>
+                  		<ul class="dropdown-menu">
+                    		<li><a href="#">All</a></li>
+                    		<li><a href="#">Entertainment</a></li>
+                  		</ul>
+              		</li>
+                
+              		<li class="dropdown-submenu"><a href="#" data-toggle="dropdown">Advanced: TOEIC785-990</a>
+                  		<ul class="dropdown-menu">
+                    		<li><a href="#">All</a></li>
+                    		<li><a href="#">Entertainment</a></li>
+                  		</ul>
+              		</li>
+          		</ul>
+        	</li>
+
+        	<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Listening & Speaking   <span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+            		<li><a href="#">Today's Pronunciation Challenge</a></li>
+            		<li><a href="#">Listening Quiz</a></li>
+          		</ul>
+        	</li>
+
+        </ul>
+    </div>
+    
+  </div><!-- /.container -->
+</nav>
 
 
 
@@ -311,6 +350,8 @@
   <script src="../../dist/js/bootstrap.min.js"></script>
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>
