@@ -1,4 +1,5 @@
   
+var my = new Object();
 // loads the IFrame Player API code asynchronously.
   var tag = document.createElement('script');
 
@@ -23,21 +24,19 @@ $(document).ready(function () {
 });*/
 
 $(document).ready(function () {
-	var ob;
-	my_url = "./video_1.js";
-	$.getJSON(my_url, function(json) {
-		console.log(json.captions);
-		/*var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
-    	for (var i = 0; i < json.en.length; i++) {
-    		$('#subtitle').append('<a href="#" class="list-group-item">'+ my.captions.en[i][cols[3]]+'</a>');
-  		}*/
-	});
+	$.ajax({
+        dataType: 'jsonp',
+        url: 'https://rawgit.com/LivenPan/Web_HW/master/video_1.js'}).always(
+            function(){
+            	my.captions=captions;
+            	//console.log(my.captions.en[1]["text"]);
+            	var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
+    			for (var i = 0; i < my.captions.en.length; i++) {
+    				$('#subtitle').append('<a href="#" class="list-group-item">'+ my.captions.en[i][cols[3]]+'</a>');
 
-    //var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
-    //for (var i = 0; i < my.captions.en.length; i++) {
-    //	$('#subtitle').append('<a href="#" class="list-group-item">'+ my.captions.en[i][cols[3]]+'</a>');
+  				}
+    });
 
-  	//}
   	
 });
 
