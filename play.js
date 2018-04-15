@@ -32,11 +32,10 @@ $(document).ready(function () {
             	//console.log(my.captions.en[1]["text"]);
             	var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
     			for (var i = 0; i < my.captions.en.length; i++) {
-    				$('#subtitle').append('<a href="#" class="list-group-item">'+ my.captions.en[i][cols[3]]+'</a>');
+    				$('#subtitle').append('<a href="#" class="list-group-item" id="subtitleListBtn'+i+'" data-seek="'+ my.captions.en[i][cols[5]]+ '">' + my.captions.en[i][cols[3]]+'</a>');
 
   				}
     });
-
   	
 });
 
@@ -46,7 +45,7 @@ function onYouTubeIframeAPIReady() {
     height: '390',
     width: '640',
     playerVars: {
-        autoplay: 1,        // 讀取時自動播放影片
+        autoplay: 0,        // 讀取時自動播放影片
         controls: 1,        // 在播放器顯示暫停／播放按鈕
         showinfo: 0,        // 影片標題顯示
         modestbranding: 0,  // YouTube Logo顯示
@@ -65,76 +64,94 @@ function onYouTubeIframeAPIReady() {
 
 
   //check字幕的button id元素添加一个事件addEventListener
+/*
+  function subtitleListBtnEvent1() {
+  	var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
+    var subtitleStartTime1 = my.captions.en[0][cols[5]];
+    var subtitleDurationTime1 = my.captions.en[0][cols[6]];
 
-  function subtitleListBtnEvent1(YTvideo) {
-    var subtitleStartTime1 = captions.en[0][cols[5]];
-    var subtitleDurationTime1 = captions.en[0][cols[6]];
-
-    YTvideo.seekTo(subtitleStartTime1, true);
+    layer.seekTo(subtitleStartTime1, true);
     setTimeout(function(){ 
-      YTvideo.stopVideo();
+      player.stopVideo();
       },subtitleDurationTime1
     );
   }
 
   function subtitleListBtnEvent2() {
-    var subtitleStartTime2 = captions.en[1][cols[5]];
-    var subtitleDurationTime2 = captions.en[1][cols[6]];
+  	var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
+    var subtitleStartTime2 = my.captions.en[1][cols[5]];
+    var subtitleDurationTime2 = my.captions.en[1][cols[6]];
 
-    YTvideo.seekTo(subtitleStartTime2, true);
+    player.seekTo(subtitleStartTime2, true);
     setTimeout(function(){ 
-      YTvideo.stopVideo();
+      player.stopVideo();
       },subtitleDurationTime2
     );
   }
 
   function subtitleListBtnEvent3() {
-    var subtitleStartTime3 = captions.en[2][cols[5]];
-    var subtitleDurationTime3 = captions.en[2][cols[6]];
+  	var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
+    var subtitleStartTime3 = my.captions.en[2][cols[5]];
+    var subtitleDurationTime3 = my.captions.en[2][cols[6]];
 
-    YTvideo.seekTo(subtitleStartTime3, true);
+    player.seekTo(subtitleStartTime3, true);
     setTimeout(function(){ 
-      YTvideo.stopVideo();
+      player.stopVideo();
       },subtitleDurationTime3
     );
   }
-
+*/
   // The API will call this function when the video player is ready.
   function onPlayerReady(event) {
-    document.getElementById("subtitleListBtn0").addEventListener("click", subtitleListBtnEvent1(event.target));
-    document.getElementById("subtitleListBtn1").addEventListener("click", subtitleListBtnEvent2(event.target));
-    document.getElementById("subtitleListBtn2").addEventListener("click", subtitleListBtnEvent3(event.target));
-    event.target.stopVideo();
+    
+
   }
 
   function onPlayerStateChange(event) {
-      switch(event.data){
-        case -1: //unstarted
-          player.playVideo();
-          break;
-        case 0: //ended
-          player.playVideo();
-          break;
-        case 1: //playing
-          player.pauseVideo();
-          break;
-        case 2: //paused
-          player.playVideo();
-          break;
-        case 3: //buffering
-          player.pauseVideo();
-          break;
-        case 5: //video cued
-          player.pauseVideo();
-          break;
-        default:
-          break;
+      if (event.data ==1) {
+
+      }
 
     }
-  }
+  
 
-  function stopVideo() {
-        player.stopVideo();
-  }
+  $(function() {
+    
+    $(document).on('click', '#subtitleListBtn0', function() {
+        player.seekTo($(this).data('seek'), true);
+        var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
+        var endTime = my.captions.en[0][cols[6]]*1000;
+        setTimeout(function(){ 
+    		player.pauseVideo();
+			},endTime);
+    });
+});
+
+
+  $(function() {
+    
+    $(document).on('click', '#subtitleListBtn1', function() {
+        player.seekTo($(this).data('seek'), true);
+        var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
+        var endTime = my.captions.en[1][cols[6]]*1000+900;
+        setTimeout(function(){ 
+    		player.pauseVideo();
+			},endTime);
+    });
+});
+
+  $(function() {
+    
+    $(document).on('click', '#subtitleListBtn2', function() {
+        player.seekTo($(this).data('seek'), true);
+        var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
+        var endTime = my.captions.en[2][cols[6]]*1000+1500;
+        setTimeout(function(){ 
+    		player.pauseVideo();
+			},endTime);
+    });
+});
+
+
 
 
