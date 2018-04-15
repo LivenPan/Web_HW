@@ -58,7 +58,7 @@ var captions = {"en":[{
 $(document).ready(function () {
     var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
     for (var i = 0; i < captions.en.length; i++) {
-    	$('#subtitle').append('<button type="button" class="list-group-item">'+captions.en[i][cols[3]]+'</button>');
+    	$('#subtitle').append('<a href="#" class="list-group-item">'+captions.en[i][cols[3]]+'</a>');
 
   	}
   	
