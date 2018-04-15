@@ -46,7 +46,7 @@ function onYouTubeIframeAPIReady() {
     height: '390',
     width: '640',
     playerVars: {
-        autoplay: 0,        // 讀取時自動播放影片
+        autoplay: 1,        // 讀取時自動播放影片
         controls: 1,        // 在播放器顯示暫停／播放按鈕
         showinfo: 0,        // 影片標題顯示
         modestbranding: 0,  // YouTube Logo顯示
@@ -65,52 +65,72 @@ function onYouTubeIframeAPIReady() {
 
 
   //check字幕的button id元素添加一个事件addEventListener
-  /*let captionBtnEvent = JSON.parse(captions);
-  document.getElementById("captionBtn1").addEventListener("click", captionBtn1Event);
-  document.getElementById("captionBtn2").addEventListener("click", captionBtn2Event);
-  document.getElementById("captionBtn3").addEventListener("click", captionBtn3Event);
 
-  function captionBtn1Event() {
-    var captionStartTime1 = console.log(
-      captionBtnEvent.
-    );
-    var captionDurationTime1 = console.log(
-      captionBtnEvent.
-    );
+  function subtitleListBtnEvent1(YTvideo) {
+    var subtitleStartTime1 = captions.en[0][cols[5]];
+    var subtitleDurationTime1 = captions.en[0][cols[6]];
 
-    player.seekTo(seconds:captionStartTime1, allowSeekAhead:true);
-    setTimeout(stopVideo, captionDurationTime1);
+    YTvideo.seekTo(subtitleStartTime1, true);
+    setTimeout(function(){ 
+      YTvideo.stopVideo();
+      },subtitleDurationTime1
+    );
   }
-  function captionBtn2Event() {
-    var captionStartTime2 = console.log(
-      captionBtnEvent.
-    );
-    var captionDurationTime2 = console.log(
-      captionBtnEvent.
-    );
 
-    player.seekTo(seconds:captionStartTime2, allowSeekAhead:true);
-    setTimeout(stopVideo, captionDurationTime2);
+  function subtitleListBtnEvent2() {
+    var subtitleStartTime2 = captions.en[1][cols[5]];
+    var subtitleDurationTime2 = captions.en[1][cols[6]];
+
+    YTvideo.seekTo(subtitleStartTime2, true);
+    setTimeout(function(){ 
+      YTvideo.stopVideo();
+      },subtitleDurationTime2
+    );
   }
-  function captionBtn3Event() {
-    var captionStartTime3 = console.log(
-      captionBtnEvent.
-    );
-    var captionDurationTime3 = console.log(
-      captionBtnEvent.
-    );
 
-    player.seekTo(seconds:captionStartTime3, allowSeekAhead:true);
-    setTimeout(stopVideo, captionDurationTime3);
-  }*/
+  function subtitleListBtnEvent3() {
+    var subtitleStartTime3 = captions.en[2][cols[5]];
+    var subtitleDurationTime3 = captions.en[2][cols[6]];
+
+    YTvideo.seekTo(subtitleStartTime3, true);
+    setTimeout(function(){ 
+      YTvideo.stopVideo();
+      },subtitleDurationTime3
+    );
+  }
 
   // The API will call this function when the video player is ready.
   function onPlayerReady(event) {
-      event.target.stopVideo();
+    document.getElementById("subtitleListBtn0").addEventListener("click", subtitleListBtnEvent1(event.target));
+    document.getElementById("subtitleListBtn1").addEventListener("click", subtitleListBtnEvent2(event.target));
+    document.getElementById("subtitleListBtn2").addEventListener("click", subtitleListBtnEvent3(event.target));
+    event.target.stopVideo();
   }
 
   function onPlayerStateChange(event) {
-    
+      switch(event.data){
+        case -1: //unstarted
+          player.playVideo();
+          break;
+        case 0: //ended
+          player.playVideo();
+          break;
+        case 1: //playing
+          player.pauseVideo();
+          break;
+        case 2: //paused
+          player.playVideo();
+          break;
+        case 3: //buffering
+          player.pauseVideo();
+          break;
+        case 5: //video cued
+          player.pauseVideo();
+          break;
+        default:
+          break;
+
+    }
   }
 
   function stopVideo() {
