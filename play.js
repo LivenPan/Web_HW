@@ -1,4 +1,4 @@
-var my = new Object();
+//var my = new Object();
 // loads the IFrame Player API code asynchronously.
   var tag = document.createElement('script');
 
@@ -11,7 +11,8 @@ var my = new Object();
   var player;
 
 
-
+/*get subtitle from voicetube*/
+/*
 $(document).ready(function () {
     $.ajax({
         dataType: 'jsonp',
@@ -19,8 +20,49 @@ $(document).ready(function () {
             function(){my.captions=captions;
             console.log(my.captions);
     });
-});
+});*/
+var captions = {"en":[{
+						"id":"27130157",
+						"caption_id":"127278",
+						"seq":"1",
+						"text":"The majority of americans believe in god.",
+						"translate_comment":"",
+						"start":"2.78",
+						"dur":"2.11",
+						"is_scores":null,
+						"created_at":"1521708113",
+						"updated_at":null
+					},{
+						"id":"27130158",
+						"caption_id":"127278",
+						"seq":"2",
+						"text":"But it's a different story in Britain.",
+						"translate_comment":"",
+						"start":"7.11",
+						"dur":"1.4",
+						"is_scores":null,
+						"created_at":"1521708113",
+						"updated_at":null
+					},{
+						"id":"27130159",
+						"caption_id":"127278",
+						"seq":"3",
+						"text":"Where in 2009, people of no religion outnumbered christians for the first time.",
+						"translate_comment":"",
+						"start":"9.429",
+						"dur":"4.92",
+						"is_scores":null,
+						"created_at":"1521708113",
+						"updated_at":null
+					}]};
+$(document).ready(function () {
+    var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
+    for (var i = 0; i < captions.en.length; i++) {
+    	$('#subtitle').append('<button type="button" class="list-group-item">'+captions.en[i][cols[3]]+'</button>');
 
+  	}
+  	
+});
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -45,32 +87,58 @@ function onYouTubeIframeAPIReady() {
   });
   }
 
+
+  //check字幕的button id元素添加一个事件addEventListener
+  /*let captionBtnEvent = JSON.parse(captions);
+  document.getElementById("captionBtn1").addEventListener("click", captionBtn1Event);
+  document.getElementById("captionBtn2").addEventListener("click", captionBtn2Event);
+  document.getElementById("captionBtn3").addEventListener("click", captionBtn3Event);
+
+  function captionBtn1Event() {
+    var captionStartTime1 = console.log(
+      captionBtnEvent.
+    );
+    var captionDurationTime1 = console.log(
+      captionBtnEvent.
+    );
+
+    player.seekTo(seconds:captionStartTime1, allowSeekAhead:true);
+    setTimeout(stopVideo, captionDurationTime1);
+  }
+  function captionBtn2Event() {
+    var captionStartTime2 = console.log(
+      captionBtnEvent.
+    );
+    var captionDurationTime2 = console.log(
+      captionBtnEvent.
+    );
+
+    player.seekTo(seconds:captionStartTime2, allowSeekAhead:true);
+    setTimeout(stopVideo, captionDurationTime2);
+  }
+  function captionBtn3Event() {
+    var captionStartTime3 = console.log(
+      captionBtnEvent.
+    );
+    var captionDurationTime3 = console.log(
+      captionBtnEvent.
+    );
+
+    player.seekTo(seconds:captionStartTime3, allowSeekAhead:true);
+    setTimeout(stopVideo, captionDurationTime3);
+  }*/
+
   // The API will call this function when the video player is ready.
   function onPlayerReady(event) {
-      //event.target.playVideo();
+      event.target.stopVideo();
   }
 
-  // The API calls this function when the player's state changes.
-  // The function indicates that when playing a video (state=1),
-  // the player should play for six seconds and then stop.
-  var done = false;
   function onPlayerStateChange(event) {
-      if (event.data == YT.PlayerState.PLAYING && !done) {
-      setTimeout(stopVideo, 6000);
-      done = true;    
-      }
+    
   }
+
   function stopVideo() {
-      player.stopVideo();
+        player.stopVideo();
   }
-/*$(document).addEventListener('google-youtube-ready',function(){
-	$.each(my.captions.en,function(i){
-		my.captions.en[i].cn = '';
-		if(my.captions.hasOwnProperty('zh-Hant')){
-			my.captions.en[i].cn = my.captions['zh-Hant'][i].text;
-		};
-	});
-	my.sentences = my.captions.en;
-	console.log("event");
-});*/
+
 
