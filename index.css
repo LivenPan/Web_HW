@@ -4,6 +4,7 @@ body {
   padding-bottom: 20px;
 }
 
+
 /**logo**/
 /*
 .logo {
@@ -73,9 +74,13 @@ body {
     border-radius:6px 0 6px 6px;
 }
 
+.navbar-right {
+  position: relative;
+}
+
 /**search bar**/
 .input-group {
-  width: 550px;
+  width: 500px;
 }
 
 .jumbotron{
@@ -84,6 +89,7 @@ body {
     background: url(./homepage_girl.jpg);
     background-size: cover;
 }
+
 
 /**RWD**/
 .thumbnail p, .thumbnail h5{
