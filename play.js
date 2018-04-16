@@ -10,6 +10,7 @@ var my = new Object();
   // creates an <iframe> (and YouTube player)
   // after the API code downloads.
   var player;
+  var active_sub = 0;
 
 
 /*get subtitle from voicetube*/
@@ -120,17 +121,23 @@ function onYouTubeIframeAPIReady() {
   $(function() {
     
     $(document).on('click', '#subtitleListBtn0', function() {
-    	
+
+    	document.getElementById('subtitleListBtn1').style.backgroundColor="#FFFFFF";
+    	document.getElementById('subtitleListBtn2').style.backgroundColor="#FFFFFF";
         var property = document.getElementById('subtitleListBtn0');
         property.style.backgroundColor = "#FFF0BA";
 
         player.seekTo($(this).data('seek'), true);
         var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
         var endTime = my.captions.en[0][cols[6]]*1000+1100;
-        setTimeout(function(){ 
-    		player.pauseVideo();
-    		property.style.backgroundColor = "#FFFFFF";
+        if(player.getPlayerState() != 1){
+        	player.playVideo();
+        	setTimeout(function(){
+    			player.pauseVideo();
+    			property.style.backgroundColor = "#FFFFFF";
 			},endTime);
+
+    	}
 
     });
 });
@@ -140,16 +147,23 @@ function onYouTubeIframeAPIReady() {
     
     $(document).on('click', '#subtitleListBtn1', function() {
 
+
+    	document.getElementById('subtitleListBtn0').style.backgroundColor="#FFFFFF";
+    	document.getElementById('subtitleListBtn2').style.backgroundColor="#FFFFFF";
+
     	var property = document.getElementById('subtitleListBtn1');
         property.style.backgroundColor = "#FFF0BA";
 
         player.seekTo($(this).data('seek'), true);
         var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
-        var endTime = my.captions.en[1][cols[6]]*1000+1400;
-        setTimeout(function(){ 
-    		player.pauseVideo();
-    		property.style.backgroundColor = "#FFFFFF";
+        var endTime = my.captions.en[1][cols[6]]*1000+1000;
+        if(player.getPlayerState() != 1){
+        	player.playVideo();
+        	setTimeout(function(){ 
+    			player.pauseVideo();
+    			property.style.backgroundColor = "#FFFFFF";
 			},endTime);
+    	}
     });
 });
 
@@ -157,16 +171,22 @@ function onYouTubeIframeAPIReady() {
     
     $(document).on('click', '#subtitleListBtn2', function() {
 
+    	document.getElementById('subtitleListBtn0').style.backgroundColor="#FFFFFF";
+    	document.getElementById('subtitleListBtn1').style.backgroundColor="#FFFFFF";
+
     	var property = document.getElementById('subtitleListBtn2');
         property.style.backgroundColor = "#FFF0BA";
 
         player.seekTo($(this).data('seek'), true);
         var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
-        var endTime = my.captions.en[2][cols[6]]*1000+1600;
-        setTimeout(function(){ 
-    		player.pauseVideo();
-    		property.style.backgroundColor = "#FFFFFF";
+        var endTime = my.captions.en[2][cols[6]]*1000+1400;
+        if(player.getPlayerState() != 1){
+        	player.playVideo();
+        	setTimeout(function(){ 
+    			player.pauseVideo();
+    			property.style.backgroundColor = "#FFFFFF";
 			},endTime);
+    	}
     });
 });
 
