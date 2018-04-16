@@ -114,6 +114,6 @@ body {
 }
 /***FB***/
 #fb_comment {
-    position: absolute;
+    position: relative;
     left: 10%;
 }
