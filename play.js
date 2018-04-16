@@ -39,6 +39,8 @@ $(document).ready(function () {
   	
 });
 
+
+
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
     videoId: 'paVXPXoyDdo',
@@ -118,12 +120,18 @@ function onYouTubeIframeAPIReady() {
   $(function() {
     
     $(document).on('click', '#subtitleListBtn0', function() {
+    	
+        var property = document.getElementById('subtitleListBtn0');
+        property.style.backgroundColor = "#FFF0BA";
+
         player.seekTo($(this).data('seek'), true);
         var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
-        var endTime = my.captions.en[0][cols[6]]*1000;
+        var endTime = my.captions.en[0][cols[6]]*1000+1100;
         setTimeout(function(){ 
     		player.pauseVideo();
+    		property.style.backgroundColor = "#FFFFFF";
 			},endTime);
+
     });
 });
 
@@ -131,11 +139,16 @@ function onYouTubeIframeAPIReady() {
   $(function() {
     
     $(document).on('click', '#subtitleListBtn1', function() {
+
+    	var property = document.getElementById('subtitleListBtn1');
+        property.style.backgroundColor = "#FFF0BA";
+
         player.seekTo($(this).data('seek'), true);
         var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
-        var endTime = my.captions.en[1][cols[6]]*1000+900;
+        var endTime = my.captions.en[1][cols[6]]*1000+1400;
         setTimeout(function(){ 
     		player.pauseVideo();
+    		property.style.backgroundColor = "#FFFFFF";
 			},endTime);
     });
 });
@@ -143,11 +156,16 @@ function onYouTubeIframeAPIReady() {
   $(function() {
     
     $(document).on('click', '#subtitleListBtn2', function() {
+
+    	var property = document.getElementById('subtitleListBtn2');
+        property.style.backgroundColor = "#FFF0BA";
+
         player.seekTo($(this).data('seek'), true);
         var cols = ["id", "caption_id", "seq", "text", "translate_comment", "start", "dur", "is_scores", "created_at", "updated_at"];
-        var endTime = my.captions.en[2][cols[6]]*1000+1500;
+        var endTime = my.captions.en[2][cols[6]]*1000+1600;
         setTimeout(function(){ 
     		player.pauseVideo();
+    		property.style.backgroundColor = "#FFFFFF";
 			},endTime);
     });
 });

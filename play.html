@@ -44,8 +44,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="logo pull-left" href="https://www.w3schools.com"><img border="0" alt="W3Schools" src="./VTicon.png" width="45" height="45"></a>
-        <a class="navbar-brand" href="https://www.voicetube.com/?ref=logo">VoiceTube</a>
+        <a class="logo pull-left" href="./index.html"><img border="0" alt="VoiceTube" src="./VTicon.png" width="45" height="45"></a>
+        <a class="navbar-brand" href="./index.html">VoiceTube</a>
     </div>
 
     <div class="collapse navbar-collapse">
@@ -95,7 +95,8 @@
           		</ul>
         	</li>
 
-          <ul class="nav navbar-nav navbar-right">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">中文 <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -105,19 +106,10 @@
           </ul>
           <li><a href="#">登入</a></li>
       </ul>
-
-        </ul>
     </div>
     
   </div><!-- /.container -->
 </nav>
-
-<ul class="nav nav-pills">
-  <p>
-  <li role="presentation"><a href="#">Listening</a></li>
-  <li role="presentation"><a href="#">Speaking</a></li>
-</p>
-</ul>
 
 
     </div>
@@ -127,6 +119,12 @@
     <!-- Example row of columns -->
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
+
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#">Listening</a></li>
+            <li><a href="#">Speaking</a></li>
+  
+          </ul>
           
           <a href="#" class="btn btn-primary btn-xs" role="button"
                           title="初級">
@@ -139,17 +137,18 @@
           
           Views:1150
           
-
-          <div id="player"></div> 
+          <div class="container" id="container_1">
+            <div id="player"></div> 
+          </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6">
-      	   <div class="list-group" id="subtitle">
+          <div class="container" id="container_2">
+      	     <div class="list-group" id="subtitle">
               
-          </div>
+            </div>
+        </div>
     	 </div>
     </div>
-  </div>
-
     <hr>
 
     <footer>
